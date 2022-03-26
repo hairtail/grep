@@ -1,11 +1,9 @@
-use std::env;
 use std::process;
 use grep::Config;
 use grep::run;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    let config = Config::new(&args).unwrap_or_else(|err|{
+    let config = Config::new(std::env::args()).unwrap_or_else(|err|{
         println!("Problem fails parsing arguments, {}", err);
         process::exit(1);
     });
